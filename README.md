@@ -1,1 +1,3 @@
-# School
+# Personal Web Program
+
+This is a project that I created for fun that helped me organize my school work during my undergrad. It runs off of a Django server and stores all of the weblinks, textbooks, grades, ect. that I used. There is a todo list and a grades display that are both supported by a SQL database. The program is entirely functional and has consistently made working much more convenient, however it is completely unoptimized and will forever be a work in progress. I'm sure that every sector of this program could be upgraded in some way to make it run faster or make the code shorter and more readable, and there are entire sections that need to be reworked as I did not account for scalability during the original implementation and I have taken this project much further than I originally thought I would. 

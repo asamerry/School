@@ -1,0 +1,411 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Directory</title>
+        <link href="{% static 'home/styles.css' %}" rel="stylesheet">
+        <script>
+
+            function setPadding() {
+                const icons = document.querySelectorAll('.icon');
+                const nonicons = document.querySelectorAll('.nonicon');
+                let navheight = document.querySelector('.navbar').offsetHeight;
+                let pad = (navheight - (nonicons[0].offsetHeight - Number(nonicons[0].style.paddingTop.split('px')[0])*2))/2;
+
+                for (icon in [0, 1, 2, 3, 4]) {
+                    icons[icon].style.padding = `${pad+9}px`;
+                };
+                for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+                    nonicons[nonicon].style.padding = `${pad}px 16px`;
+                };
+                const buttons = document.querySelectorAll('#dropbutton');
+                for (button in [0, 1]) {
+                    buttons[button].style.padding = `${pad}px 16px ${pad-1}px 16px`;
+                };
+
+                const header = document.querySelector('.header');
+                const headtext = document.querySelector('#headtext');
+                let padd = (header.offsetHeight - (headtext.offsetHeight - Number(headtext.style.paddingTop.split('px')[0])*2))/2;
+
+                headtext.style.padding = `${padd}px`;
+
+                let article = document.querySelector('.article')
+                let paddd = (document.querySelector('#news').offsetHeight - (article.offsetHeight - Number(article.style.paddingTop.split('px')[0])*2))/2
+                article.style.padding = `${paddd}px 4px`
+
+            };
+
+            addEventListener('DOMContentLoaded', () => {
+
+                document.getElementsByTagName('html')[0].setAttribute('data-theme', localStorage.getItem('theme'))
+
+                const tasks = '{{ tasks }}';
+                if (tasks.length > 13) {
+                    document.querySelector('#todo').style.backgroundImage = 'none';
+                };
+
+                const math = document.querySelector('.course.math');
+                math.addEventListener('animationend', () => {
+                    math.style.position = 'initial';
+                });
+
+                setPadding();
+                window.addEventListener('resize', setPadding);
+
+                let articles = document.querySelectorAll('.article');
+                let order = 0;
+                setInterval(() => {
+                    articles.item(order).style.display = 'none';
+                    order + 1 == articles.length ? order = 0 : order++;
+                    articles.item(order).style.display = 'block';
+
+                    /*const pad = (document.querySelector('#news').offsetHeight - (articles.item(order).offsetHeight - (Number(articles.item(order).style.paddingTop.split('px')[0]) + Number(articles.item(order).style.paddingBottom.split('px')[0]))))/2
+                    articles.item(order).style.padding = `${pad}px 4px`*/
+
+                }, 5000);
+
+            });
+
+            function changeTheme(theme) {
+                document.getElementsByTagName('html')[0].setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme)
+            };
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1 id="headtext">School Directory</h1>
+        </div>
+        <div class="navbar">
+            <a class="icon" id="canvas" title="Canvas" href="https://www.canvas.ucsb.edu/" target="_blank"></a>
+            <a class="icon" id="drive" title="Google Drive" href="https://drive.google.com" target="_blank"></a>
+            <a class="icon" id="gmail" title="Gmail" href="https://mail.google.com" target="_blank"></a>
+            <a class="icon" id="chatgpt" title="ChatGPT" href="https://chat.openai.com" target="_blank"></a>
+            <a class="icon" id="libgen" title="Library Genesis" href="https://libgen.is" target="_blank"></a>
+            <a class="nonicon" href="https://my.sa.ucsb.edu/gold/Home.aspx" target="_blank">UCSB Gold</a>
+            <a class="nonicon" href="https://docs.google.com/spreadsheets/d/10SNmra0_IshRH5mh9WWi3y0lzWu1HOvcMf1fgvkVuLs/edit#gid=0" target="_blank">Course Outline</a>
+            <div id="dropdown">
+                <button id="dropbutton">Major Sheets</button>
+                <div id="dropcontent">
+                    <a class="nonicon" href="https://www.pstat.ucsb.edu/sites/default/files/sitefiles/Financial%20Mathematics%20and%20Statistics.pdf" target="_blank">FMS B.S.</a>
+                    <a class="nonicon" href="https://www.math.ucsb.edu/sites/default/files/sitefiles/undergraduate/Math%20BS%20Major%20Req%20Sheet%2023-24.pdf" target="_blank">Math B.S.</a>
+                    <a class="nonicon" href="https://www.math.ucsb.edu/sites/default/files/sitefiles/Applied%20Mathematics%20Major%20%282024%29%20.pdf" target="_blank">App Math B.S.</a>
+                    <a class="nonicon" href="https://www.pstat.ucsb.edu/sites/default/files/sitefiles/Statistics%20and%20Data%20Science%2C%20B.S..pdf" target="_blank">Stats / D.S. B.S.</a>
+                </div>
+            </div>
+            <div id="dropdown">
+                <button id="dropbutton">Departments</button>
+                <div id="dropcontent">
+                    <a class="nonicon" href="https://www.math.ucsb.edu/" target="_blank">Mathematics</a>
+                    <a class="nonicon" href="https://www.pstat.ucsb.edu/" target="_blank">Statistics</a>
+                    <a class="nonicon" href="https://www.econ.ucsb.edu/" target="_blank">Economics</a>
+                    <a class="nonicon" href="https://www.cs.ucsb.edu/" target="_blank">Computer Science</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column side" id="left">
+                <div id="news">
+                    {% for title, blank in titles.items %}
+                        <a class="article" href="https://www.ams.org/journals/cams/home-2024.html?active=current" target="_blank">{{ title }}</a>
+                    {% empty %}
+                        <a class="article">No New Papers</a>
+                    {% endfor %}
+                </div>
+                <div id="todo">
+                    <h2><a href="http://127.0.0.1:8000/admin/home/task/" target="_blank">To-Do List
+                        {% if tasknum != 0 %}
+                            ({{ tasknum }})
+                        {% endif %}</a>
+                    </h2>
+                    <ul>
+                        {% for task in tasks %}
+                            <li>{{ task }}</li>
+                        {% empty %}
+                            <li>No tasks.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div id="textbooks">
+                    <h2><a title="Library" href="http://127.0.0.1:8000/textbooks/">Textbooks</a></h2>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/principlesofmathematicalanalysis">Principles of Mathematical Analysis; Walter Rudin</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/realanalysis">Real Analysis; Jay Cummings</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/anintroductiontooptimization">An Introduction to Optimization with Applications to Machine Learning; Edwin K.P. Chong</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontostochasticprocesseswithr">Introduction to Stochastic Processes with R; Richard P. Dobrow</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontoprobabilitymodels">Introduction to Probability Models; Sheldon M. Ross</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/problemsolvingwithcpp">Problem Solving with C++; Walter Savich</a></div>
+                </div>
+            </div>
+
+            <div class="column middle">
+                <div class="course math">
+                    <h2><a href="http://127.0.0.1:8000/mathematics">Mathematics</a></h2>
+                        <aside class="left math">
+                            <div><a href="https://detexify.kirelabs.org/classify.html" target="_blank">Detexify</a></div>
+                            <div><a href="https://geogebra.org/3d?lang=en" target="_blank">3D Graphing Calculator</a></div>
+                            <div><a href="https://flexbooks.ck12.org/cbook/ck-12-calculus-concepts/section/9.5/primary/lesson/some-properties-of-infinite-series-calc/" target="_blank">Infinite Series Reference</a></div>
+                            <div><a href="https://proofwiki.org/wiki/Main_Page" target="_blank">Proof Wiki</a></div>
+                            <div><a href="https://www.argmin.net/" target="_blank">Argmin Blog</a></div>
+                            <div><a href="https://people.eecs.berkeley.edu/~brecht/opt4ml_book/" target="_blank">Optimization for Modern Data Analysis</a></div>
+                        </aside>
+                        <aside class="right math">
+                            <div class="papers">
+                                <button>Papers</button>
+                                <div class="drop papers">
+                                    <div><a href="https://www.axler.net/DwD.pdf" target="_blank">Down with Determinants</a></div>
+                                    <div><a href="https://people.math.harvard.edu/~knill/teaching/math22b2019/handouts/lecture17.pdf" target="_blank">Spectral Theorem</a></div>
+                                    <div><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4840776" target="_blank">Inference of Utilities and Time Preference in Sequential Decision-Making</a></div>
+                                </div>
+                            </div>
+                            <div class="mit">
+                                <button>OpenCourseWare</button>
+                                <div class="drop mit">
+                                    <div><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank">18.06: Linear Algebra</a></div>
+                                    <div><a href="https://ocw.mit.edu/courses/18-s096-matrix-calculus-for-machine-learning-and-beyond-january-iap-2023/" target="_blank">18.S096: Matrix Calculus</a></div>
+                                    <div><a href="https://ocw.mit.edu/courses/8-012-physics-i-classical-mechanics-fall-2008/" target="_blank">8.012: Classical Mechanics</a></div>
+                                </div>
+                            </div>
+                            <div class="optimization">
+                                <button>Optimization</button>
+                                <div class="drop optimization">
+                                    <div><a href="https://feog.github.io/chap4dm.pdf" target="_blank">Linear Programming</a></div>
+                                    <div><a href="https://mikl.dk/post/2019-wolfe-conditions/?q=%2F%2F" target="_blank">Wolfe's Conditions</a></div>
+                                    <div><a href="https://www.princeton.edu/~aaa/Public/Teaching/ORF523/S16/ORF523_S16_Lec7_gh.pdf", target="_blank">Convex Functions</a></div>
+                                    <div><a href="https://en.wikipedia.org/wiki/Backtracking_line_search" target="_blank">Backtracking Line Search</a></div>
+                                    <div><a href="https://arxiv.org/pdf/1909.13371" target="_blank">Gradient Descent: The Ultimate Optimizer</a></div>
+                                    <div><a href="https://arxiv.org/pdf/1412.6980" target="_blank">ADAM: A Method For Stochastic Optimization</a></div>
+                                    <div><a href="https://arxiv.org/pdf/2406.09523" target="_blank">Finite-Agent Stochastic Differential Games on Large Graphs: I. The Linear-Quadratic Case</a></div>
+                                    <div><a href="https://pages.cs.wisc.edu/~yudongchen/cs726_sp23/Lecture_9_10_accelerated_GD.pdf" target="_blank">Accelerated Gradient Descent</a></div>
+                                    <div><a href="https://www.ams.org/journals/cams/2024-04-17/S2692-3688-2024-00042-1/S2692-3688-2024-00042-1.pdf" target="_blank">Swarm-Based Gradient Descent Method For Non-Convex Optimization</a></a></div>
+                                    <div><a href="https://arxiv.org/pdf/0805.4471" target="_blank">Exact Matrix Completion via Convex Optimization</a></a></div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+
+                <div class="course stat">
+                    <h2>Statistics</h2>
+                        <div><a href="https://www.probabilitycourse.com/chapter6/6_1_3_moment_functions.php" target="_blank">Moment Generating Functions</a></div>
+                        <div><a href="https://www.appliedcombinatorics.org/book/app-comb.html" target="_blank">Applied Combinatorics</a></div>
+                </div>
+
+                <div class="course cs">
+                    <h2>Computer Science</h2>
+                        <aside class="left cs">
+                            <div><a href="https://github.com/dashboard" target="_blank">Github</a></div>
+                            <div><a href="https://tryhackme.com/dashboard" target="_blank">Try Hack Me</a></div>
+                            <div><a href="https://app.dataquest.io/learning/path" target="_blank">Dataquest</a></div>
+                            <div><a href="https://learn.zybooks.com/library" target="_blank">Zybooks</a></div>
+                            <div><a href="https://vim.rtorr.com/" target="_blank">Vim Cheatsheet</a></div>
+                        </aside>
+                        <aside class="right cs">
+                            <div class="python">
+                                <button>Python</button>
+                                <div class="drop python">
+                                    <div><a href="https://docs.python.org/3.12/index.html" target="_blank">Documentation</a></div>
+                                    <div><a href="https://docs.python.org/3.12/tutorial/index.html" target="_blank">Tutorial</a></div>
+                                </div>
+                            </div>
+                            <div class="r">
+                                <button>R</button>
+                                <div class="drop r">
+                                    <div><a href="https://r-coder.com/plot-r/#Plot_line_type" target="_blank">R Plots</a></div>
+                                    <div><a href="https://cran.rstudio.com/bin/windows/base/howto-R-4.3.html" target="_blank">RTools43</a></div>
+                                    <div><a href="https://moderndive.netlify.app/1-getting-started.html" target="_blank">Data Tutorial</a></div>
+                                    <div><a href="https://zsmith27.github.io/rmarkdown_crash-course/lesson-4-yaml-headers.html" target="_blank">RStudio Tutorial</a></div>
+                                    <div><a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf" target="_blank">GGPlot Cheat Sheet</a></div>
+                                </div>
+                            </div>
+                            <div class="cs50">
+                                <button>CS50</button>
+                                <div class="drop cs50">
+                                    <div><a href="https://cs50.harvard.edu/python/2022/" target="_blank">Python</a></div>
+                                    <div><a href="https://cs50.harvard.edu/web/2020/" target="_blank">Web Programming</a></div>
+                                    <div><a href="https://cs50.harvard.edu/ai/2024/" target="_blank">Aritifical Intelligence</a></div>
+                                </div>
+                            </div>
+                        </aside>
+                </div>
+
+                <div class="course econ">
+                    <h2>Economics</h2>
+                            <aside class="left econ">
+                                <div><a href="https://docs.google.com/document/d/1ZqHmFT2TYXkBXoQZZ6b2T9UOspXjo__DvQL9GVfOiUo/edit" target="_blank">Microeconomics Notes</a></div>
+                                <div><a href="https://docs.google.com/document/d/1zfKXj16v4hgbBhb-dsf0scMAu_bILZRvHHYtZzopUcw/edit" target="_blank">Macroeconomics Notes</a></div>
+                                <div><a href="https://docs.google.com/document/d/1hD6xa5sW8S4H2WurngSOJXzXqvJlCKgnd34UqGFWcLc/edit" target="_blank">Micro Theory Notes</a></div>
+                                <div><a href="https://art19.com/shows/think-like-an-economist" target="_blank">Think Like an Economist Podcast</a></div>
+                            </aside>
+                            <aside class="right econ">
+                                <div class="econometrics">
+                                    <button>Econometrics</button>
+                                    <div class="drop econometrics">
+                                        <div><a href="http://127.0.0.1:8000/textbooks/introductoryeconometrics/" target="_blank">Econometrics</a></div>
+                                    </div>
+                                </div>
+                                <div class="gameTheory">
+                                    <button>Game Theory</button>
+                                    <div class="drop gameTheory">
+                                        <div><a href="http://127.0.0.1:8000/textbooks/introductoryeconometrics/" target="_blank">Econometrics</a></div>
+                                    </div>
+                                </div>
+                            </aside>
+                </div>
+            </div>
+
+            <div class="column side" id="right">
+                <div id="grades">
+                    <h2><a href="http://127.0.0.1:8000/admin/home/assignment/" target="_blank">Grades</a></h2>
+                    <div><b>Math 118B: {{ math118b }} ({{ math118bletter }})</b>
+                        <div>Attendence: 
+                            {% if math118batt == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math118batt }}
+                            {% endif %}
+                        </div>
+                        <div>Quizzes: 
+                            {% if math118bquiz == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math118bquiz }}
+                            {% endif %}
+                        </div>
+                        <div>Homework: 
+                            {% if math118bhome == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math118bhome }}
+                            {% endif %}
+                        </div>
+                        <div>Midterms: 
+                            {% if math118bmid == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math118bmid }}
+                            {% endif %}
+                        </div>
+                        <div>Final: 
+                            {% if math118bfinal == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math118bfinal }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div><b>Math 132A: {{ math132a }} ({{ math132aletter }})</b>
+                        <div>Homework: 
+                            {% if math132ahome == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math132ahome }}
+                            {% endif %}
+                        </div>
+                        <div>Midterm: 
+                            {% if math132amid == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math132amid }}
+                            {% endif %}
+                        </div>
+                        <div>Final: 
+                            {% if math132afinal == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math132afinal }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div><b>Pstat 160A: {{ pstat160a }} ({{ pstat160aletter }})</b>
+                        <div>Homework: 
+                            {% if pstat160ahome == 0.0 %}
+                                --
+                            {% else %}
+                                {{ pstat160ahome }}
+                            {% endif %}
+                        </div>
+                        <div>Quizzes: 
+                            {% if pstat160aquiz == 0.0 %}
+                                --
+                            {% else %}
+                                {{ pstat160aquiz }}
+                            {% endif %}
+                        </div>
+                        <div>Midterm: 
+                            {% if pstat160amid == 0.0 %}
+                                --
+                            {% else %}
+                                {{ pstat160amid }}
+                            {% endif %}
+                        </div>
+                        <div>Final: 
+                            {% if pstat160afinal == 0.0 %}
+                                --
+                            {% else %}
+                                {{ pstat160afinal }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div><b>Cmpsc 16: {{ cmpsc16 }} ({{ cmpsc16letter }})</b>
+                        <div>Zybooks: 
+                            {% if cmpsc16zy == 0.0 %}
+                                --
+                            {% else %}
+                                {{ cmpsc16zy }}
+                            {% endif %}
+                        </div>
+                        <div>Homework: 
+                            {% if cmpsc16home == 0.0 %}
+                                --
+                            {% else %}
+                                {{ cmpsc16home }}
+                            {% endif %}
+                        </div>
+                        <div>Midterm: 
+                            {% if cmpsc16mid == 0.0 %}
+                                --
+                            {% else %}
+                                {{ cmpsc16mid }}
+                            {% endif %}
+                        </div>
+                        <div>Final: 
+                            {% if cmpsc16final == 0.0 %}
+                                --
+                            {% else %}
+                                {{ cmpsc16final }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="themes">
+                <p class="menu theme">
+                    <span><a onclick="changeTheme('light')">Light</a></span>
+                    <span><a onclick="changeTheme('dark')">Dark</a></span>
+                    <span><a onclick="changeTheme('darker')">Darker</a></span>
+                    <span><a onclick="changeTheme('warm')">Warm</a></span>
+                    <span><a onclick="changeTheme('cool')">Cool</a></span>
+                </p>
+                <button onclick="switchMode()">Themes</button>
+            </div>
+    
+            <div class="stocks">
+                <p class="menu funds">
+                    <span><a>{{ spx }}</a></span>
+                    <span><a>{{ comp }}</a></span>
+                    <span><a>{{ djia }}</a></span>
+                </p>
+                <button>Markets</button>
+            </div>
+        </div>
+
+    </body>
+</html>

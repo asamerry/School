@@ -1,0 +1,14 @@
+{% extends "textbooks/template.html" %}
+{% load static %}
+
+{% block body %}
+        <title>Elementary Analysis</title>
+    </head>
+    <body>
+        <button><a href="http://127.0.0.1:8000/textbooks/">Library</a></button>
+        <button><a href="http://127.0.0.1:8000/home/">Home</a></button>
+        <h1>Elementary Analysis, Kenneth A. Ross</h1>
+        <div id="pdf">
+            <embed class="pdf-embed" src="{% static 'textbooks/elementaryanalysis.pdf' %}" type="application/pdf">
+        </div>
+{% endblock %}

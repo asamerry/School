@@ -1,0 +1,14 @@
+{% extends "textbooks/template.html" %}
+{% load static %} 
+
+{% block body %}
+        <title>Mathematics of Investment and Credit</title>
+    </head>
+    <body>
+        <button><a href="http://127.0.0.1:8000/textbooks/">Library</a></button>
+        <button><a href="http://127.0.0.1:8000/home/">Home</a></button>
+    <h1>Mathematics of Investment and Credit, Samuel A. Broverman</h1>
+    <div id="pdf">
+        <embed class="pdf-embed" src="{% static 'textbooks/mathematicsofinvestmentandcredit.pdf' %}" type="application/pdf">
+    </div>
+{% endblock %}

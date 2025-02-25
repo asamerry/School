@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="{% static 'textbooks/templatestyles.css' %}" rel="stylesheet">
+        <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+        </script>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [['$','$'], ['\\(','\\)']],
+                    processEscapes: true
+                },
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+        <script>
+
+            var name = document.location.pathname.split('/')[2]
+
+            function updateOutput() {
+                let input = document.getElementById("input").value;
+                document.getElementById("output").innerHTML = localStorage.getItem('commands') + input;
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, "output"]);
+            }
+
+            function lathead(toggle) {
+                input = document.querySelector('#input')
+                if (toggle) {
+                    input.value = localStorage.getItem('commands') + input.value;
+                } else {
+                    if (input.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n').length > 1) {
+                        localStorage.setItem('commands', input.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n')[0] + '$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n');
+                    };
+                    input.value = input.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n')[input.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n').length-1];
+                };
+            }
+
+            function save() {
+                var inputArea = document.querySelector('#input')
+                var textareaValue = inputArea.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n')[inputArea.value.split('$%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%$\n\n').length-1];
+                localStorage.setItem(name, textareaValue);
+
+                lathead(false);
+                document.querySelector('#lathead input').checked = false
+                updateOutput();
+
+                if (textareaValue != '') {
+                    document.querySelector('#input').style.display = 'none';
+                    document.querySelector('#output').style.display = 'block';
+                    document.querySelector('#save').style.display = 'none';
+                    document.querySelector('#lathead').style.display = 'none';
+                    document.querySelector('#edit').style.display = 'block';
+                };
+            }
+
+            function edit() {
+                document.querySelector('#input').style.display = 'block';
+                document.querySelector('#output').style.display = 'none';
+                document.querySelector('#save').style.display = 'block';
+                document.querySelector('#lathead').style.display = 'block'
+                document.querySelector('#edit').style.display = 'none';
+            }
+
+            function bookmark() {
+                localStorage.setItem(`${name} page`, document.querySelector('.pdf-embed').attributes[1]['value'].split('=')[1])
+
+                const canvas = document.querySelector('.pdf-embed');
+                const context = canvas.getContext('2d');
+                console.log(context)
+            }
+
+            window.onload = () => {
+
+                var savedText = localStorage.getItem(name);
+                if (savedText) {
+                    document.querySelector('#input').value = savedText;
+                };
+                save();
+
+                var checkbox = document.querySelector('#lathead input');
+                checkbox.addEventListener('click', () => {lathead(checkbox.checked)})
+
+                var currentPage = localStorage.getItem(`${name} page`);
+                pdfDoc.getPage(currentPage).then(function (page) {
+                    const viewport = page.getViewport({ scale: 1.5 });
+                    canvas.width = viewport.width;
+                    canvas.height = viewport.height;
+                    page.render({ canvasContext: context, viewport: viewport });
+                });
+                console.log('Current page:', currentPage);
+
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementsByTagName('html')[0].setAttribute('data-type', localStorage.getItem('theme'));
+            });
+
+        </script>
+
+            {% block body %}
+            {% endblock %}
+
+        <div id="notes">
+            <h2>Notes</h2>
+            <button id="save" onclick="save()">Save</button>
+            <label id="lathead">Toggle Head
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <button id="edit" onclick="edit()">Edit</button>
+            <button id="bookmark" onclick="bookmark()">Bookmark Page</button>
+            <textarea class="text" id="input"></textarea>
+            <div class="text" id="output">Blank</div>
+        </div>
+    </body>
+</html>

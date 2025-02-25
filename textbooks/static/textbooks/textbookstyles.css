@@ -1,0 +1,70 @@
+body {
+    background-color: #F2F2F2;
+    background-image: url('images/cherryblossom.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+button {
+    float: right;
+}
+
+h1 {
+    color: #F2F2F2;
+    padding-top: 60px;
+    text-align: center;
+    font-size: 150px;
+    margin-top: 15px;
+    text-shadow: 
+        -1px -1px 10px #000,
+        1px -1px 0px #000,
+        -1px 1px 10px #000,
+        1px 1px 0px #000;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    padding: 2px 10px;
+}
+
+#search {
+    background-color: #F2F2F2;
+    width: 70%;
+    height: 6vh;
+    margin: auto;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 43%;
+    height: 3.5vh;
+    margin-top: 8px;
+    margin-left: 50px;
+    float: left;
+}
+
+#list {
+    background-color: #F2F2F2;
+    width: 35%;
+    height: 32vh;
+    margin: 0 auto;
+    border-style: solid;
+    border-width: 2px;
+    overflow: auto;
+}
+#list div{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#list div:hover {
+    background-color: #c4c4c4;
+}
+
+small {
+    float: right;
+    margin-top: 100px;
+}
