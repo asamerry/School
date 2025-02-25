@@ -728,6 +728,13 @@ aside {
     font-weight: bold;
     text-shadow: var(--global-hover-border);
 }
+.stochastics:hover .drop.stochastics {
+    display: block;
+}
+.stochastics:hover button {
+    font-weight: bold;
+    text-shadow: var(--global-hover-border);
+}
 
 .footer {
     background-color: var(--global-navbar-bg);
