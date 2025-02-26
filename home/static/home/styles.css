@@ -148,6 +148,8 @@ html[data-theme='light'] {
     --global-darkchatgpt: url('images/darkChatgpt.png');
     --global-libgen: url('images/Libgen.png');
     --global-darklibgen: url('images/darkLibgen.png');
+    --global-admin: url('images/Admin.png');
+    --global-admin-hover: url('images/darkAdmin.png');
     --global-box-shadow: 2px 2px 5px 1px #5b5b5b;
     --global-confetti-image: url('images/lightConfetti.png');
     --global-boxes1-bg: #fffcbcab;
@@ -176,6 +178,8 @@ html[data-theme='dark'] {
     --global-darkchatgpt: url('images/darkChatgpt.png');
     --global-libgen: url('images/Libgen.png');
     --global-darklibgen: url('images/darkLibgen.png');
+    --global-admin: url('images/Admin.png');
+    --global-admin-hover: url('images/darkAdmin.png');
     --global-box-shadow: 2px 2px 5px 1px #161616;
     --global-confetti-image: url('images/darkConfetti.png');
     --global-boxes1-bg: #fffcbcab;
@@ -208,6 +212,8 @@ html[data-theme='darker'] {
     --global-darkchatgpt: url('images/darkChatgpt.png');
     --global-libgen: url('images/Libgen.png');
     --global-darklibgen: url('images/darkLibgen.png');
+    --global-admin: url('images/Admin.png');
+    --global-admin-hover: url('images/darkAdmin.png');
     --global-box-shadow: 2px 2px 5px 1px #000000;
     --global-confetti-image: url('images/darkerConfetti.png');
     --global-boxes1-bg: #9e9c74ab;
@@ -236,6 +242,8 @@ html[data-theme='warm'] {
     --global-darkchatgpt: url('images/darkChatgpt.png');
     --global-libgen: url('images/Libgen.png');
     --global-darklibgen: url('images/darkLibgen.png');
+    --global-admin: url('images/Admin.png');
+    --global-admin-hover: url('images/darkAdmin.png');
     --global-box-shadow: 2px 2px 5px 1px #1e1e1e;
     --global-confetti-image: url('images/warmConfetti.png');
     --global-boxes1-bg: #f7b29b;
@@ -265,6 +273,8 @@ html[data-theme='cool'] {
     --global-darkchatgpt: url('images/Chatgpt.png');
     --global-libgen: url('images/darkLibgen.png');
     --global-darklibgen: url('images/Libgen.png');
+    --global-admin: url('images/darkAdmin.png');
+    --global-admin-hover: url('images/Admin.png');
     --global-box-shadow: 2px 2px 5px 1px #1e1e1e;
     --global-confetti-image: url('images/coolConfetti.png');
     --global-boxes1-bg: #a08d7d;
@@ -361,6 +371,15 @@ body {
 }
 #libgen:hover {
     background-image: var(--global-darklibgen);
+}
+#admin {
+    background-image: var(--global-admin);
+    background-size: 36px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#admin:hover {
+    background-image: var(--global-admin-hover);
 }
 
 #dropdown {

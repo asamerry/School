@@ -16,7 +16,7 @@
                 let navheight = document.querySelector('.navbar').offsetHeight;
                 let pad = (navheight - (nonicons[0].offsetHeight - Number(nonicons[0].style.paddingTop.split('px')[0])*2))/2;
 
-                for (icon in [0, 1, 2, 3, 4]) {
+                for (icon in [0, 1, 2, 3, 4, 5]) {
                     icons[icon].style.padding = `${pad+9}px`;
                 };
                 for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
@@ -87,6 +87,7 @@
             <a class="icon" id="gmail" title="Gmail" href="https://mail.google.com" target="_blank"></a>
             <a class="icon" id="chatgpt" title="ChatGPT" href="https://chat.openai.com" target="_blank"></a>
             <a class="icon" id="libgen" title="Library Genesis" href="https://libgen.is" target="_blank"></a>
+            <a class="icon" id="admin" title="Admin" href="http://127.0.0.1:8000/admin" target="_blank"></a>
             <a class="nonicon" href="https://my.sa.ucsb.edu/gold/Home.aspx" target="_blank">UCSB Gold</a>
             <a class="nonicon" href="https://docs.google.com/spreadsheets/d/10SNmra0_IshRH5mh9WWi3y0lzWu1HOvcMf1fgvkVuLs/edit#gid=0" target="_blank">Course Outline</a>
             <div id="dropdown">
@@ -119,10 +120,10 @@
                     {% endfor %}
                 </div>
                 <div id="todo">
-                    <h2><a href="http://127.0.0.1:8000/admin/home/task/" target="_blank">To-Do List
+                    <h2>To-Do List
                         {% if tasknum != 0 %}
                             ({{ tasknum }})
-                        {% endif %}</a>
+                        {% endif %}
                     </h2>
                     <ul>
                         {% for task in tasks %}
@@ -271,7 +272,7 @@
 
             <div class="column side" id="right">
                 <div id="grades">
-                    <h2><a href="http://127.0.0.1:8000/admin/home/assignment/" target="_blank">Grades</a></h2>
+                    <h2>Grades</h2>
                     <div><b>Math 118B: {{ math118b }} ({{ math118bletter }})</b>
                         <div>Attendence: 
                             {% if math118batt == 0.0 %}
