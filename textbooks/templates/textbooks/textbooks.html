@@ -55,7 +55,7 @@
         </div>
         <div id="list">
             {% for book in books %}
-                <div><a href="http://127.0.0.1:8000/textbooks/{{book.url}}">{{book.title}}; {{book.author}}</a></div>
+                <div><a href="http://127.0.0.1:8000/textbooks/{{book.url}}" title="{{ book.title }}">{{book.title}}; {{book.author}}</a></div>
             {% endfor %}
         </div>
         <small>*Library contains {{ books|length }} supplemental materials.</small>

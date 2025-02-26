@@ -49,8 +49,10 @@
                 };
 
                 const math = document.querySelector('.course.math');
+                const stat = document.querySelector('.course.stat');
                 math.addEventListener('animationend', () => {
                     math.style.position = 'initial';
+                    stat.style.position = 'initial';
                 });
 
                 setPadding();

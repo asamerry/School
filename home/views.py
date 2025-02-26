@@ -1,14 +1,14 @@
-# Change of Quarter Directions
-# In models.py, change choices to new quarter and migrate
-# In views.py, change all to new courses, changing categories and weights as needed
-#    remove all dropped grade restrictions
-# In index.html, change all variables and headers to new courses
+"""
+Change of Quarter Directions
+In models.py, change choices to new quarter and migrate
+In views.py, change all to new courses, changing categories and weights as needed
+   remove all dropped grade restrictions
+In index.html, change all variables and headers to new courses
 
-
-# New Implementations
-# 1. Update Calendar to week calender
-# 2. To make room, move library to right column and add drop bars to grades
-
+New Implementations
+1. Update Calendar to week calender
+2. To make room, move library to right column and add drop bars to grades
+"""
 
 from django.shortcuts import render
 from .models import *
@@ -16,14 +16,6 @@ from .models import *
 from bs4 import BeautifulSoup
 import requests
 
-
-'''
-class Class:
-    def __init__(self, name, weight):
-        self.name = name
-        self.weight = weight
-        self.categories = categories
-'''
 
 def index(request):
 

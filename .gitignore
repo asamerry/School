@@ -1,6 +1,6 @@
 __pycache__
 migrations
 
-*.pdf
+Texts
 
 db.sqlite3
