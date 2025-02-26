@@ -1,0 +1,14 @@
+{% extends "textbooks/template.html" %}
+{% load static %} 
+
+{% block body %}
+        <title>Fundamentals of Convex Analysis and Optimization</title>
+    </head>
+    <body>
+        <button><a href="http://127.0.0.1:8000/textbooks/">Library</a></button>
+        <button><a href="http://127.0.0.1:8000/home/">Home</a></button>
+        <h1>Fundamentals of Convex Analysis and Optimization; Marco A. Lopez</h1>
+        <div id="pdf">
+            <embed class="pdf-embed" src="{% static 'textbooks/fundamentalsofconvexanalysisandoptimization.pdf' %}" type="application/pdf">
+        </div>
+{% endblock %}

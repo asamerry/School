@@ -1,0 +1,14 @@
+{% extends "textbooks/template.html" %}
+{% load static %} 
+
+{% block body %}
+        <title>Newton-Type Methods for Optimization and Variational Problems</title>
+    </head>
+    <body>
+        <button><a href="http://127.0.0.1:8000/textbooks/">Library</a></button>
+        <button><a href="http://127.0.0.1:8000/home/">Home</a></button>
+        <h1>Newton-Type Methods for Optimization and Variational Problems; Alexey F. Izmailov</h1>
+        <div id="pdf">
+            <embed class="pdf-embed" src="{% static 'textbooks/newtontypemethodsforoptimizationandvariationalproblems.pdf' %}" type="application/pdf">
+        </div>
+{% endblock %}

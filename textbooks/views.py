@@ -233,3 +233,18 @@ def theoryofneuralcomputation(request):
 
 def complexanalysis(request): 
     return render(request, "textbooks/complexanalysis.html")
+
+def newtontypemethodsforoptimizationandvariationalproblems(request):
+    return render(request, "textbooks/newtontypemethodsforoptimizationandvariationalproblems.html")
+
+def fundamentalsofconvexanalysisandoptimization(request):
+    return render(request, "textbooks/fundamentalsofconvexanalysisandoptimization.html")
+
+def derivativefreeandblackboxoptimization(request):
+    return render(request, "textbooks/derivativefreeandblackboxoptimization.html")
+
+def practicalmathematicaloptimization(request):
+    return render(request, "textbooks/practicalmathematicaloptimization.html")
+
+def anoptimizationprimer(request):
+    return render(request, "textbooks/anoptimizationprimer.html")

@@ -76,5 +76,10 @@ urlpatterns = [
     path("progit/", views.progit, name="progit"), 
     path("theoryofneuralcomputation/", views.theoryofneuralcomputation, name="theoryofneuralcomputation"),
     path("complexanalysis/", views.complexanalysis, name="complexanalysis"),
+    path("newtontypemethodsforoptimizationandvariationalproblems/", views.newtontypemethodsforoptimizationandvariationalproblems, name="newtontypemethodsforoptimizationandvariationalproblems"),
+    path("fundamentalsofconvexanalysisandoptimization/", views.fundamentalsofconvexanalysisandoptimization, name="fundamentalsofconvexanalysisandoptimization"),
+    path("derivativefreeandblackboxoptimization/", views.derivativefreeandblackboxoptimization, name="derivativefreeandblackboxoptimization"),
+    path("practicalmathematicaloptimization/", views.practicalmathematicaloptimization, name="practicalmathematicaloptimization"),
+    path("anoptimizationprimer/", views.anoptimizationprimer, name="anoptimizationprimer"),
 ]
 
