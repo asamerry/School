@@ -8,6 +8,7 @@ html[data-theme='cherryblossom'] {
         1px 1px 0px #000;
     --box-color: #fff9f9;
     --box-color-hover: #c3bebe;
+    --tag-color: black;
 }
 html[data-theme='rainforest'] {
     --background-image: url('images/rainforest.jpg');
@@ -19,6 +20,7 @@ html[data-theme='rainforest'] {
         1px 1px 0px #000;
     --box-color: #f5fbf8;
     --box-color-hover: #bac1bd;
+    --tag-color: white;
 }
 html[data-theme='library'] {
     --background-image: url('images/library.jpg');
@@ -30,6 +32,7 @@ html[data-theme='library'] {
         1px 1px 0px #000;
     --box-color: #d1cec5;
     --box-color-hover: #95938f;
+    --tag-color: black;
 }
 html[data-theme='rainy'] {
     --background-image: url('images/rainy.jpg');
@@ -41,6 +44,7 @@ html[data-theme='rainy'] {
         1px 1px 0px #000;
     --box-color: #a1ada3;
     --box-color-hover: #848d85;
+    --tag-color: white;
 }
 
 body {
@@ -113,24 +117,22 @@ a {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-left: 10px;
 }
 .title {
     width: 41%;
-    padding-left: 10px;
 }
 .author {
     width: 40%;
     border-left-style: solid;
     border-width: 3px;
     border-color: #c6c6c6;
-    padding-left: 10px;
 }
 .type {
-    width: 12%;
+    width: 12.5%;
     border-left-style: solid;
     border-width: 3px;
     border-color: #c6c6c6;
-    padding-left: 10px;
 }
 a:hover div {
     background-color: var(--box-color-hover);
@@ -138,6 +140,7 @@ a:hover div {
 }
 
 small {
+    color: var(--tag-color);
     float: right;
     margin-top: 40px;
     margin-right: 10px;
