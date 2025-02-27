@@ -7,13 +7,6 @@
         <title>Library</title>
         <script>
 
-            document.addEventListener('DOMContentLoaded', ()=> {
-                if (localStorage.getItem('library_theme') == null || localStorage.getItem('library_theme') == '') {
-                    localStorage.setItem('library_theme', 'cherryblossom');
-                }
-                document.getElementsByTagName('html')[0].setAttribute('data-theme', localStorage.getItem('library_theme'));
-            })
-
             document.addEventListener('keyup', () => {
 
                 const textbooks = document.querySelectorAll('div a');
@@ -49,21 +42,65 @@
                 };
             });
 
+            var themes = ["cherryblossom", "rainforest", "library", "rainy"];
+            var html = document.getElementsByTagName('html')[0]
+            document.addEventListener('DOMContentLoaded', ()=> {
+                if ((localStorage.getItem("library_theme") == null) || (localStorage.getItem("library_theme") == '')) {
+                    localStorage.setItem('library_theme', 0);
+                }
+                html.setAttribute('data-theme', themes[parseInt(localStorage.getItem("library_theme"))]);
+            })
+
+            function changeTheme() {
+                var index = parseInt(localStorage.getItem('library_theme'));
+                if (index >= themes.length-1) {
+                    index = 0;
+                } else {
+                    index = index + 1;
+                }
+                localStorage.setItem('library_theme', index);
+                html.setAttribute('data-theme', themes[index]);
+            }
+
         </script>
     </head>
     <body>
         <button><a href="http://127.0.0.1:8000/home/">Home</a></button>
+        <button onclick="changeTheme()">Theme</button>
         <div>
             <h1>Library</h1>
         </div>
-        <div id="search">
-            <input placeholder="By Title" id="title">
-            <input placeholder="By Author" id="author">
-        </div>
-        <div id="list">
-            {% for book in books %}
-                <div><a href="http://127.0.0.1:8000/textbooks/{{book.url}}" title="{{ book.title }}">{{book.title}}; {{book.author}}</a></div>
-            {% endfor %}
+        <div id="row">
+            <div id="search">
+                <input placeholder="By Title" class="textinput" id="title">
+                <input placeholder="By Author" class="textinput" id="author">
+                <aside id="searchleft">
+                    <div class="typebox">
+                        <input type="checkbox">Books
+                        <span class="checkmark"></span>
+                    </div>
+                    <div class="typebox">
+                        <input type="checkbox">Papers
+                        <span class="checkmark"></span>
+                    </div>
+                    <div class="typebox">
+                        <input type="checkbox">Lecture Notes
+                        <span class="checkmark"></span>
+                    </div>
+                </aside>
+                <aside class="searchright">
+
+                </aside>
+            </div>
+            <div id="list">
+                {% for book in books %}
+                    <a href="http://127.0.0.1:8000/textbooks/{{book.url}}" title="{{ book.title }}">
+                        <div class="title">{{ book.title }}</div>
+                        <div class="author">{{ book.author }}</div>
+                        <div class="type">{{ book.type }}</div>
+                    </a>
+                {% endfor %}
+            </div>
         </div>
         <small>*Library contains {{ books|length }} supplemental materials.</small>
     </body>

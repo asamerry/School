@@ -374,7 +374,7 @@ body {
 }
 #admin {
     background-image: var(--global-admin);
-    background-size: 36px;
+    background-size: 38px;
     background-position: center;
     background-repeat: no-repeat;
 }

@@ -77,8 +77,8 @@
 
             function changeTheme(theme) {
                 document.getElementsByTagName('html')[0].setAttribute('data-theme', theme);
-                localStorage.setItem('home_theme', theme)
-            };
+                localStorage.setItem('home_theme', theme);
+            }
 
         </script>
     </head>
@@ -411,18 +411,8 @@
                     <span><a onclick="changeTheme('warm')">Warm</a></span>
                     <span><a onclick="changeTheme('cool')">Cool</a></span>
                 </p>
-                <button onclick="switchMode()">Themes</button>
-            </div>
-    
-            <div class="stocks">
-                <p class="menu funds">
-                    <span><a>{{ spx }}</a></span>
-                    <span><a>{{ comp }}</a></span>
-                    <span><a>{{ djia }}</a></span>
-                </p>
-                <button>Markets</button>
+                <button>Themes</button>
             </div>
         </div>
-
     </body>
 </html>
