@@ -7,6 +7,13 @@
         <title>Library</title>
         <script>
 
+            document.addEventListener('DOMContentLoaded', ()=> {
+                if (localStorage.getItem('library_theme') == null || localStorage.getItem('library_theme') == '') {
+                    localStorage.setItem('library_theme', 'cherryblossom');
+                }
+                document.getElementsByTagName('html')[0].setAttribute('data-theme', localStorage.getItem('library_theme'));
+            })
+
             document.addEventListener('keyup', () => {
 
                 const textbooks = document.querySelectorAll('div a');

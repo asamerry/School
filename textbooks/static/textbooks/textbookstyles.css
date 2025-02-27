@@ -1,6 +1,17 @@
+html[data-theme='cherryblossom'] {
+    --background-image: url('images/cherryblossom.jpg');
+    --title-color: #F2F2F2;
+    --title-shadow: 
+        -1px -1px 10px #000,
+        1px -1px 0px #000,
+        -1px 1px 10px #000,
+        1px 1px 0px #000;
+    --box-color: #F2F2F2;
+}
+
 body {
     background-color: #F2F2F2;
-    background-image: url('images/cherryblossom.jpg');
+    background-image: var(--background-image);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -10,16 +21,12 @@ button {
 }
 
 h1 {
-    color: #F2F2F2;
+    color: var(--title-color);
     padding-top: 60px;
     text-align: center;
     font-size: 150px;
     margin-top: 15px;
-    text-shadow: 
-        -1px -1px 10px #000,
-        1px -1px 0px #000,
-        -1px 1px 10px #000,
-        1px 1px 0px #000;
+    text-shadow: var(--title-shadow);
 }
 
 a {
@@ -29,7 +36,7 @@ a {
 }
 
 #search {
-    background-color: #F2F2F2;
+    background-color: var(--box-color);
     width: 70%;
     height: 6vh;
     margin: auto;
@@ -47,7 +54,7 @@ input {
 }
 
 #list {
-    background-color: #F2F2F2;
+    background-color: var(--box-color);
     width: 35%;
     height: 32vh;
     margin: 0 auto;

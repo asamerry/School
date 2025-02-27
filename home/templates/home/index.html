@@ -41,7 +41,10 @@
 
             addEventListener('DOMContentLoaded', () => {
 
-                document.getElementsByTagName('html')[0].setAttribute('data-theme', localStorage.getItem('theme'))
+                if (localStorage.getItem('home_theme') == null || localStorage.getItem('home_theme') == '') {
+                    localStorage.setItem('home_theme', 'light')
+                }
+                document.getElementsByTagName('html')[0].setAttribute('data-theme', localStorage.getItem('home_theme'))
 
                 const tasks = '{{ tasks }}';
                 if (tasks.length > 13) {
@@ -74,7 +77,7 @@
 
             function changeTheme(theme) {
                 document.getElementsByTagName('html')[0].setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme)
+                localStorage.setItem('home_theme', theme)
             };
 
         </script>
