@@ -11,9 +11,9 @@ class Keyword(models.Model):
 
 class Text(models.Model):
     type = models.CharField(max_length=20, choices=TYPES)
-    title = models.CharField(max_length=99)
-    author = models.CharField(max_length=99)
-    url = models.CharField(max_length=99)
+    title = models.CharField(max_length=499)
+    author = models.CharField(max_length=199)
+    url = models.CharField(max_length=199)
     keywords = models.ManyToManyField(Keyword)
 
     def __str__(self):

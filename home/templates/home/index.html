@@ -19,11 +19,11 @@
                 for (icon in [0, 1, 2, 3, 4, 5]) {
                     icons[icon].style.padding = `${pad+9}px`;
                 };
-                for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+                for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
                     nonicons[nonicon].style.padding = `${pad}px 16px`;
                 };
                 const buttons = document.querySelectorAll('#dropbutton');
-                for (button in [0, 1]) {
+                for (button in [0, 1, 2]) {
                     buttons[button].style.padding = `${pad}px 16px ${pad-1}px 16px`;
                 };
 
@@ -113,6 +113,13 @@
                     <a class="nonicon" href="https://www.cs.ucsb.edu/" target="_blank">Computer Science</a>
                 </div>
             </div>
+            <div id="dropdown">
+                <button id="dropbutton">Databases</button>
+                <div id="dropcontent">
+                    <a class="nonicon" href="https://link.springer.com/" target="_blank">SpringerLink</a>
+                    <a class="nonicon" href="https://jmlr.org/" target="_blank">Journal of Machine Learning</a>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -139,7 +146,7 @@
                     </ul>
                 </div>
                 <div id="textbooks">
-                    <h2><a title="Library" href="http://127.0.0.1:8000/textbooks/">Textbooks</a></h2>
+                    <h2><a title="Library" href="http://127.0.0.1:8000/textbooks/">Library</a></h2>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/babyrudin">Principles of Mathematical Analysis; Walter Rudin</a></div>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/realanalysis">Real Analysis; Jay Cummings</a></div>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/anintroductiontooptimization">An Introduction to Optimization with Applications to Machine Learning; Edwin K.P. Chong</a></div>

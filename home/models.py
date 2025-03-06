@@ -3,9 +3,9 @@ from django.db import models
 SPR24_COURSES = [('Math 117', 'Math 117'), ('Math 108A', 'Math 108A'), ('Econ 2', 'Econ 2')]
 SUM24A_COURSES = [('Engl 134AA', 'Engl 134AA'), ('Writ 2', 'Writ 2')]
 SUM24B_COURSES = [('Econ 10A', 'Econ 10A'), ('Pstat 120B', 'Pstat 120B')]
-FALL24_COURSES = [('Math 108B', 'Math 108B'), ('Math 118A', 'Math 118A'), ('Math 113', 'Math 113'), ('Pstat 126', 'Pstat 126')]
+FALL24_COURSES = [('Math 118A', 'Math 118A'), ('Math 108B', 'Math 108B'), ('Math 113', 'Math 113'), ('Pstat 126', 'Pstat 126')]
 WIN25_COURSES = [('Math 118B', 'Math 118B'), ('Math 132A', 'Math 132A'), ('Pstat 160A', 'Pstat 160A'), ('Cmpsc 16', 'Cmpsc 16')]
-SPR25_COURSES = [('Math 108C', 'Math 108C'), ('Math 118C', 'Math 118C'), ('Math 132B', 'Math 132B'), ('Math 115B', 'Math 115B'), ('Pstat 160A', 'Pstat 160A')]
+SPR25_COURSES = [('Math 118C', 'Math 118C'), ('Math 132B', 'Math 132B'), ('Pstat 160B', 'Pstat 160B'), ('Pstat 122, Pstat 122'), ('Math 147A', 'Math 147A')]
 
 class Task(models.Model):
     task = models.CharField(max_length=64)

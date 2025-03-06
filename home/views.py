@@ -322,7 +322,7 @@ def index(request):
         'pstat160a': 0.0 if pstat160a == -0.0 else pstat160a,
         'pstat160aletter': pstat160aletter,
         'pstat160ahome': round(pstat160ahome*100, 1), 
-        'pstat160aquiz': round(pstat160aquiz, 1),
+        'pstat160aquiz': round(pstat160aquiz*100, 1),
         'pstat160amid': round(pstat160amid*100, 1), 
         'pstat160afinal': round(pstat160afinal*100, 1), 
         'cmpsc16': 0.0 if cmpsc16 == -0.0 else cmpsc16,
