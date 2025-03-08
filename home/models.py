@@ -13,7 +13,7 @@ class Task(models.Model):
     due = models.DateField(null=True)
 
     def __str__(self):
-        return f"{self.task}, {self.course}"
+        return f"{self.task}; {self.course}"
 
 class Assignment(models.Model):
     course = models.CharField(max_length=12, choices=WIN25_COURSES)
