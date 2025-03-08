@@ -146,6 +146,10 @@
                                 {% endif %}
                             {% endfor %}
                         </ul>
+                    {% empty %}
+                        <ul>
+                            <li>No tasks.</li>
+                        </ul>
                     {% endfor %}
                 </div>
                 <div id="textbooks">

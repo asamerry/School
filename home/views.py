@@ -303,12 +303,11 @@ def index(request):
     tasks = Task.objects.all().order_by('due', 'course')
     tasknum = len(tasks)
 
-    day0 = datetime.date.today()
-    day1 = datetime.date(day0.year, day0.month, day0.day+1)
-    day2 = datetime.date(day0.year, day0.month, day0.day+2)
-    day3 = datetime.date(day0.year, day0.month, day0.day+3)
-    day4 = datetime.date(day0.year, day0.month, day0.day+4)
-    days = [day0, day1, day2, day3, day4]
+    days = []
+    for task in tasks:
+        day = task.due
+        if day not in days:
+            days.append(day)
 
     titles = paperscrape()
 
