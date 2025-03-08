@@ -137,13 +137,16 @@
                             ({{ tasknum }})
                         {% endif %}
                     </h2>
-                    <ul>
-                        {% for task in tasks %}
-                            <li>{{ task }}</li>
-                        {% empty %}
-                            <li>No tasks.</li>
-                        {% endfor %}
-                    </ul>
+                    {% for day in days %}
+                        <p>{{ day }}</p>
+                        <ul>
+                            {% for task in tasks %}
+                                {% if task.due == day %}
+                                    <li>{{ task }}</li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endfor %}
                 </div>
                 <div id="textbooks">
                     <h2><a title="Library" href="http://127.0.0.1:8000/textbooks/">Library</a></h2>

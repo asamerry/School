@@ -457,6 +457,7 @@ body {
     animation-name: news;
     animation-duration: 2.3s;
     animation-fill-mode: forwards;
+    overflow: hidden;
 }
 #news a {
     font-size: 11pt;
@@ -476,7 +477,7 @@ body {
 #todo {
     background-size: cover;
     padding-right: 10px;
-    height: 285px;
+    height: 298px;
     border-radius: 8px;
     width: 95%;
     margin: 0 auto;
@@ -488,16 +489,24 @@ body {
     animation-name: todo;
     animation-duration: 2.6s;
     animation-fill-mode: forwards;
+    overflow: hidden;
 }
 #todo h2 {
     padding-left: 15px;
     margin-top: 0;
     margin-bottom: 10px;
 }
+#todo p {
+    font-size: 15px;
+    font-weight: bold;
+    padding-left: 18px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
 
 li {
     font-size: 15px;
-    padding-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 #textbooks {

@@ -13,7 +13,7 @@ class Task(models.Model):
     due = models.DateField(null=True)
 
     def __str__(self):
-        return f"{self.task}, {self.course} due {str(self.due).split('-')[1]}/{str(self.due).split('-')[2]}"
+        return f"{self.task}, {self.course}"
 
 class Assignment(models.Model):
     course = models.CharField(max_length=12, choices=WIN25_COURSES)

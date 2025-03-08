@@ -15,7 +15,7 @@ from .models import *
 
 from bs4 import BeautifulSoup
 import requests
-
+import datetime
 
 def index(request):
 
@@ -298,12 +298,22 @@ def index(request):
     elif 60 > cmpsc16:
         cmpsc16letter = "F"
 
+
+
     tasks = Task.objects.all().order_by('due', 'course')
     tasknum = len(tasks)
+
+    day0 = datetime.date.today()
+    day1 = datetime.date(day0.year, day0.month, day0.day+1)
+    day2 = datetime.date(day0.year, day0.month, day0.day+2)
+    day3 = datetime.date(day0.year, day0.month, day0.day+3)
+    day4 = datetime.date(day0.year, day0.month, day0.day+4)
+    days = [day0, day1, day2, day3, day4]
 
     titles = paperscrape()
 
     return render(request, "home/index.html", {
+        'days': days,
         'tasks': tasks[0: min(9, tasknum)], 
         'tasknum': tasknum,
         'titles': titles,
