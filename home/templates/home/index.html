@@ -19,7 +19,7 @@
                 for (icon in [0, 1, 2, 3, 4, 5]) {
                     icons[icon].style.padding = `${pad+9}px`;
                 };
-                for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
+                for (nonicon in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
                     nonicons[nonicon].style.padding = `${pad}px 16px`;
                 };
                 const buttons = document.querySelectorAll('#dropbutton');
@@ -118,6 +118,7 @@
                 <div id="dropcontent">
                     <a class="nonicon" href="https://link.springer.com/" target="_blank">SpringerLink</a>
                     <a class="nonicon" href="https://jmlr.org/" target="_blank">Journal of Machine Learning</a>
+                    <a class="nonicon" href="https://arxiv.org/" target="_blank">ArXiv</a>
                 </div>
             </div>
         </div>
@@ -154,12 +155,12 @@
                 </div>
                 <div id="textbooks">
                     <h2><a title="Library" href="http://127.0.0.1:8000/textbooks/">Library</a></h2>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/babyrudin">Principles of Mathematical Analysis; Walter Rudin</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/realanalysis">Real Analysis; Jay Cummings</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/anintroductiontooptimization">An Introduction to Optimization with Applications to Machine Learning; Edwin K.P. Chong</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introstochasticprocesses">An Introduction to Stochastic Processes with R; Robert P. Dobrow</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontoprobabilitymodels">An Introduction to Probability Models; Sheldon M. Ross</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/problemsolvingwithcpp">Problem Solving with C++; Walter Savitch</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/babyrudin">Principles of Mathematical Analysis</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/anintroductiontooptimization">An Introduction to Optimization with Applications to Machine Learning</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introstochasticprocesses">An Introduction to Stochastic Processes with R</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontoprobabilitymodels">An Introduction to Probability Models</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/designandanalysisofexperiments">Design and Analysis of Experiments</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/978-3-662-69721-4">Elementary Differential Geometry</a></div>
                 </div>
             </div>
 
@@ -175,14 +176,6 @@
                             <div><a href="https://people.eecs.berkeley.edu/~brecht/opt4ml_book/" target="_blank">Optimization for Modern Data Analysis</a></div>
                         </aside>
                         <aside class="right math">
-                            <div class="papers">
-                                <button>Papers</button>
-                                <div class="drop papers">
-                                    <div><a href="https://www.axler.net/DwD.pdf" target="_blank">Down with Determinants</a></div>
-                                    <div><a href="https://people.math.harvard.edu/~knill/teaching/math22b2019/handouts/lecture17.pdf" target="_blank">Spectral Theorem</a></div>
-                                    <div><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4840776" target="_blank">Inference of Utilities and Time Preference in Sequential Decision-Making</a></div>
-                                </div>
-                            </div>
                             <div class="mit">
                                 <button>OpenCourseWare</button>
                                 <div class="drop mit">
@@ -209,6 +202,13 @@
                             <div><a href="https://www.appliedcombinatorics.org/book/app-comb.html" target="_blank">Applied Combinatorics</a></div>
                         </aside>
                         <aside class="right stat">
+                            <div class="machinelearning">
+                                <button>Machine Learning</button>
+                                <div class="drop machinelearning">
+                                    <div><a href="https://en.wikipedia.org/wiki/Principal_component_analysis" target="_blank">Principle Component Analysis</a></div>
+                                    <div><a href="https://en.wikipedia.org/wiki/Topological_deep_learning" target="_blank">Topological Deep Learning</a></div>
+                                </div>
+                            </div>
                             <div class="stochastics">
                                 <button>Stochastics</button>
                                 <div class="drop stochastics">

@@ -511,6 +511,7 @@ li {
 
 #textbooks {
     padding-left: 15px;
+    padding-right: 11px;
     border-radius: 8px;
     width: 95%;
     margin: 0 auto;
@@ -700,13 +701,6 @@ aside {
     margin-bottom: 0px;
 }
 
-.papers:hover .drop.papers {
-    display: block;
-}
-.papers:hover button {
-    font-weight: bold;
-    text-shadow: var(--global-hover-border);
-}
 .mit:hover .drop.mit {
     display: block;
 }
@@ -753,6 +747,13 @@ aside {
     display: block;
 }
 .gameTheory:hover button {
+    font-weight: bold;
+    text-shadow: var(--global-hover-border);
+}
+.machinelearning:hover .drop.machinelearning{
+    display: block;
+}
+.machinelearning:hover button {
     font-weight: bold;
     text-shadow: var(--global-hover-border);
 }
