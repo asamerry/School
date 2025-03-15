@@ -526,6 +526,7 @@ li {
 }
 #textbooks h2 {
     margin-top: 0;
+    margin-bottom: 9px;
 }
 #textbooks div {
     white-space: nowrap;
@@ -733,6 +734,13 @@ aside {
     display: block;
 }
 .cs50:hover button {
+    font-weight: bold;
+    text-shadow: var(--global-hover-border);
+}
+.dsa:hover .drop.dsa{
+    display: block;
+}
+.dsa:hover button {
     font-weight: bold;
     text-shadow: var(--global-hover-border);
 }
