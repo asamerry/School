@@ -281,6 +281,37 @@ html[data-theme='cool'] {
     --global-boxes2-bg: #D3BBCB;
 }
 
+html[data-theme='sunny'] {
+    --global-row-color: #cccacd;
+    --global-course-color: #FFFAF4;
+    --global-link-color: rgb(34, 42, 43);
+    --global-link-hover: #2d4748;
+    --global-hover-border: none;
+    --global-head-bg: url('images/Head.jpg');
+    --global-head-bgsize: cover;
+    --global-head-position: center 800px;
+    --global-navbar-bg: #333;
+    --global-navbar-bghover: #F2F2F2;
+    --global-navbar-color: #F2F2F2;
+    --global-navbar-colorhover: #333;
+    --global-canvas: url('images/Canvas.png');
+    --global-darkcanvas: url('images/darkCanvas.png');
+    --global-drive: url('images/GoogleDrive.png');
+    --global-darkdrive: url('images/darkGoogleDrive.png');
+    --global-gmail: url('images/Gmail.png');
+    --global-darkgmail: url('images/darkGmail.png');
+    --global-chatgpt: url('images/Chatgpt.png');
+    --global-darkchatgpt: url('images/darkChatgpt.png');
+    --global-libgen: url('images/Libgen.png');
+    --global-darklibgen: url('images/darkLibgen.png');
+    --global-admin: url('images/Admin.png');
+    --global-admin-hover: url('images/darkAdmin.png');
+    --global-box-shadow: 2px 2px 5px 1px #1e1e1e;
+    --global-confetti-image: url('images/warmConfetti.png');
+    --global-boxes1-bg: #e2aa9b;
+    --global-boxes2-bg: #adc9d4;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -565,15 +596,15 @@ li {
     text-decoration-line: underline;
 }
 #grades div {
-    padding-bottom: 4px;
-    font-size: 21px;
+    padding-bottom: 3px;
+    font-size: 19px;
 }
 #grades div div {
     padding: 0;
     margin-left: 20px;
-    font-size: 14px;
-    margin-top: 4px;
-    margin-bottom: 7px;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: 2px;
 }
 
 .column.side h2 {

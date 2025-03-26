@@ -5,7 +5,7 @@ SUM24A_COURSES = [("Independent", "Independent"), ("Engl 134AA", "Engl 134AA"), 
 SUM24B_COURSES = [("Independent", "Independent"), ("Econ 10A", "Econ 10A"), ("Pstat 120B", "Pstat 120B")]
 FALL24_COURSES = [("Independent", "Independent"), ("Math 118A", "Math 118A"), ("Math 108B", "Math 108B"), ("Math 113", "Math 113"), ("Pstat 126", "Pstat 126")]
 WIN25_COURSES = [("Independent", "Independent"), ("Math 118B", "Math 118B"), ("Math 132A", "Math 132A"), ("Pstat 160A", "Pstat 160A"), ("Cmpsc 16", "Cmpsc 16")]
-SPR25_COURSES = [("Independent", "Independent"), ("Math 118C", "Math 118C"), ("Math 132B", "Math 132B"), ("Pstat 160B", "Pstat 160B"), ("Pstat 174, Pstat 174"), ("Math 147A", "Math 147A")]
+SPR25_COURSES = [("Independent", "Independent"), ("Math 118C", "Math 118C"), ("Math 132B", "Math 132B"), ("Pstat 160B", "Pstat 160B"), ("Pstat 274, Pstat 274"), ("Math 147A", "Math 147A")]
 
 class Task(models.Model):
     task = models.CharField(max_length=64)

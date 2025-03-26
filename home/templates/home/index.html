@@ -294,123 +294,153 @@
             <div class="column side" id="right">
                 <div id="grades">
                     <h2>Grades</h2>
-                    <div><b>Math 118B: {{ math118b }} ({{ math118bletter }})</b>
+                    <div><b>Math 118C: {{ math118c }} ({{ math118cletter }})</b>
                         <div>Attendence: 
-                            {% if math118batt == 0.0 %}
+                            {% if math118catt == 0.0 %}
                                 --
                             {% else %}
-                                {{ math118batt }}
+                                {{ math118catt }}
                             {% endif %}
                         </div>
                         <div>Quizzes: 
-                            {% if math118bquiz == 0.0 %}
+                            {% if math118cquiz == 0.0 %}
                                 --
                             {% else %}
-                                {{ math118bquiz }}
+                                {{ math118cquiz }}
                             {% endif %}
                         </div>
                         <div>Homework: 
-                            {% if math118bhome == 0.0 %}
+                            {% if math118chome == 0.0 %}
                                 --
                             {% else %}
-                                {{ math118bhome }}
+                                {{ math118chome }}
                             {% endif %}
                         </div>
                         <div>Midterms: 
-                            {% if math118bmid == 0.0 %}
+                            {% if math118cmid == 0.0 %}
                                 --
                             {% else %}
-                                {{ math118bmid }}
+                                {{ math118cmid }}
                             {% endif %}
                         </div>
                         <div>Final: 
-                            {% if math118bfinal == 0.0 %}
+                            {% if math118cfinal == 0.0 %}
                                 --
                             {% else %}
-                                {{ math118bfinal }}
+                                {{ math118cfinal }}
                             {% endif %}
                         </div>
                     </div>
-                    <div><b>Math 132A: {{ math132a }} ({{ math132aletter }})</b>
+                    <div><b>Math 132B: {{ math132b }} ({{ math132bletter }})</b>
                         <div>Homework: 
-                            {% if math132ahome == 0.0 %}
+                            {% if math132bhome == 0.0 %}
                                 --
                             {% else %}
-                                {{ math132ahome }}
+                                {{ math132bhome }}
                             {% endif %}
                         </div>
                         <div>Midterm: 
-                            {% if math132amid == 0.0 %}
+                            {% if math132bmid == 0.0 %}
                                 --
                             {% else %}
-                                {{ math132amid }}
+                                {{ math132bmid }}
                             {% endif %}
                         </div>
                         <div>Final: 
-                            {% if math132afinal == 0.0 %}
+                            {% if math132bfinal == 0.0 %}
                                 --
                             {% else %}
-                                {{ math132afinal }}
+                                {{ math132bfinal }}
                             {% endif %}
                         </div>
                     </div>
-                    <div><b>Pstat 160A: {{ pstat160a }} ({{ pstat160aletter }})</b>
+                    <div><b>Pstat 160B: {{ pstat160b }} ({{ pstat160bletter }})</b>
                         <div>Homework: 
-                            {% if pstat160ahome == 0.0 %}
+                            {% if pstat160bhome == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat160ahome }}
+                                {{ pstat160bhome }}
                             {% endif %}
                         </div>
                         <div>Quizzes: 
-                            {% if pstat160aquiz == 0.0 %}
+                            {% if pstat160bquiz == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat160aquiz }}
+                                {{ pstat160bquiz }}
                             {% endif %}
                         </div>
                         <div>Midterm: 
-                            {% if pstat160amid == 0.0 %}
+                            {% if pstat160bmid == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat160amid }}
+                                {{ pstat160bmid }}
                             {% endif %}
                         </div>
                         <div>Final: 
-                            {% if pstat160afinal == 0.0 %}
+                            {% if pstat160bfinal == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat160afinal }}
+                                {{ pstat160bfinal }}
                             {% endif %}
                         </div>
                     </div>
-                    <div><b>Cmpsc 16: {{ cmpsc16 }} ({{ cmpsc16letter }})</b>
+                    <div><b>Pstat 274: {{ pstat274 }} ({{ pstat274letter }})</b>
                         <div>Zybooks: 
-                            {% if cmpsc16zy == 0.0 %}
+                            {% if pstat274zy == 0.0 %}
                                 --
                             {% else %}
-                                {{ cmpsc16zy }}
+                                {{ pstat274zy }}
                             {% endif %}
                         </div>
                         <div>Homework: 
-                            {% if cmpsc16home == 0.0 %}
+                            {% if pstat274home == 0.0 %}
                                 --
                             {% else %}
-                                {{ cmpsc16home }}
+                                {{ pstat274home }}
                             {% endif %}
                         </div>
                         <div>Midterm: 
-                            {% if cmpsc16mid == 0.0 %}
+                            {% if pstat274mid == 0.0 %}
                                 --
                             {% else %}
-                                {{ cmpsc16mid }}
+                                {{ pstat274mid }}
                             {% endif %}
                         </div>
                         <div>Final: 
-                            {% if cmpsc16final == 0.0 %}
+                            {% if pstat274final == 0.0 %}
                                 --
                             {% else %}
-                                {{ cmpsc16final }}
+                                {{ pstat274final }}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div><b>Math 147A: {{ math147a }} ({{ math147aletter }})</b>
+                        <div>Homework: 
+                            {% if math147ahome == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math147ahome }}
+                            {% endif %}
+                        </div>
+                        <div>Quizzes: 
+                            {% if math147aquiz == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math147aquiz }}
+                            {% endif %}
+                        </div>
+                        <div>Midterm: 
+                            {% if math147amid == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math147amid }}
+                            {% endif %}
+                        </div>
+                        <div>Final: 
+                            {% if math147afinal == 0.0 %}
+                                --
+                            {% else %}
+                                {{ math147afinal }}
                             {% endif %}
                         </div>
                     </div>
@@ -426,6 +456,7 @@
                     <span><a onclick="changeTheme('darker')">Darker</a></span>
                     <span><a onclick="changeTheme('warm')">Warm</a></span>
                     <span><a onclick="changeTheme('cool')">Cool</a></span>
+                    <span><a onclick="changeTheme('sunny')">Sunny</a></span>
                 </p>
                 <button>Themes</button>
             </div>
