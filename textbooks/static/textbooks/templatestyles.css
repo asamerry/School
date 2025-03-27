@@ -23,6 +23,11 @@ html[data-type='cool'] {
     --global-notes-bg: #a08d7d;
     --global-text-bg: #FFFAF4;
 }
+html[data-type='sunny'] {
+    --global-main-bg: #cccacd;
+    --global-notes-bg: #e2aa9b;
+    --global-text-bg: #FFFAF4;
+}
 
 body {
     background: var(--global-main-bg);
