@@ -15,7 +15,6 @@ from .models import *
 
 from bs4 import BeautifulSoup
 import requests
-import datetime
 
 def index(request):
 
@@ -103,9 +102,9 @@ def index(request):
         'final': [],
     }
 
-    math132bhomeweight = 0.25
-    math132bmidweight = 0.25
-    math132bfinalweight = 0.5
+    math132bhomeweight = 0.3
+    math132bmidweight = 0.3
+    math132bfinalweight = 0.4
 
     for grade in math132bassigments:
         if grade.category == 'Homework':
@@ -167,10 +166,10 @@ def index(request):
         'final': [],
     }
 
-    pstat160bhomeweight = 0.2
-    pstat160bquizweight = 0.2
+    pstat160bhomeweight = 0.5
+    pstat160bquizweight = 0.1
     pstat160bmidweight = 0.25
-    pstat160bfinalweight = 0.35
+    pstat160bfinalweight = 0.15
 
     for grade in pstat160bassigments:
         if grade.category == 'Homework':
@@ -231,45 +230,45 @@ def index(request):
 
     pstat274assigments = Assignment.objects.filter(course='Pstat 274')
     pstat274grades = {
-        'zy': [],
+        'lab': [],
         'home': [],
-        'mid': [],
+        'quiz': [],
         'final': [],
     }
 
-    pstat274zyweight = 0.15
-    pstat274homeweight = 0.3
-    pstat274midweight = 0.25
-    pstat274finalweight = 0.3
+    pstat274labweight = 0.5
+    pstat274homeweight = 0.15
+    pstat274quizweight = 0.3
+    pstat274finalweight = 0.5
 
     for grade in pstat274assigments:
-        if grade.category == 'Zybooks':
-            pstat274grades['zy'].append(grade.score/grade.total)
+        if grade.category == 'Lab':
+            pstat274grades['lab'].append(grade.score/grade.total)
         elif grade.category == 'Homework':
             pstat274grades['home'].append(grade.score/grade.total)
-        elif grade.category == 'Midterm':
-            pstat274grades['mid'].append(grade.score/grade.total)
+        elif grade.category == 'Quizzes':
+            pstat274grades['quiz'].append(grade.score/grade.total)
         elif grade.category == 'Final':
             pstat274grades['final'].append(grade.score/grade.total)
 
-    pstat274zy = sum(pstat274grades['zy']) / max(len(pstat274grades['zy']), 1)
+    pstat274lab = sum(pstat274grades['lab']) / max(len(pstat274grades['lab']), 1)
     pstat274home = sum(pstat274grades['home']) / max(len(pstat274grades['home']), 1)
-    pstat274mid = sum(pstat274grades['mid']) / max(len(pstat274grades['mid']), 1)
+    pstat274quiz = sum(pstat274grades['quiz']) / max(len(pstat274grades['quiz']), 1)
     pstat274final = sum(pstat274grades['final']) / max(len(pstat274grades['final']), 1)
 
     pstat274divisor = 1
-    if pstat274zy == 0:
-        pstat274divisor -= pstat274zyweight
+    if pstat274lab == 0:
+        pstat274divisor -= pstat274labweight
     if pstat274home == 0:
         pstat274divisor -= pstat274homeweight
-    if pstat274mid == 0:
-        pstat274divisor -= pstat274midweight
+    if pstat274quiz == 0:
+        pstat274divisor -= pstat274quizweight
     if pstat274final == 0:
         pstat274divisor -= pstat274finalweight
     if pstat274divisor == 0:
         pstat274divisor = 1
 
-    pstat274 = round((pstat274zy*pstat274zyweight + pstat274home*pstat274homeweight + pstat274mid*pstat274midweight + pstat274final*pstat274finalweight)*100/pstat274divisor, 2)
+    pstat274 = round((pstat274lab*pstat274labweight + pstat274home*pstat274homeweight + pstat274quiz*pstat274quizweight + pstat274final*pstat274finalweight)*100/pstat274divisor, 2)
 
     if pstat274 == 100:
         pstat274letter = "A+"
@@ -302,36 +301,29 @@ def index(request):
     math147aassigments = Assignment.objects.filter(course='Math 147A')
     math147agrades = {
         'home': [],
-        'quiz': [],
         'mid': [],
         'final': [],
     }
 
-    math147ahomeweight = 0.2
-    math147aquizweight = 0.2
-    math147amidweight = 0.25
-    math147afinalweight = 0.35
+    math147ahomeweight = 0.15
+    math147amidweight = 0.35
+    math147afinalweight = 0.5
 
     for grade in math147aassigments:
         if grade.category == 'Homework':
             math147agrades['home'].append(grade.score/grade.total)
-        elif grade.category == 'Quiz': 
-            math147agrades['quiz'].append(grade.score/grade.total)
         elif grade.category == 'Midterm':
             math147agrades['mid'].append(grade.score/grade.total)
         elif grade.category == 'Final':
             math147agrades['final'].append(grade.score/grade.total)
 
     math147ahome = sum(math147agrades['home']) / max(len(math147agrades['home']), 1)
-    math147aquiz = sum(math147agrades['quiz']) / max(len(math147agrades['quiz']), 1)
     math147amid = sum(math147agrades['mid']) / max(len(math147agrades['mid']), 1)
     math147afinal = sum(math147agrades['final']) / max(len(math147agrades['final']), 1)
 
     math147adivisor = 1
     if math147ahome == 0:
         math147adivisor -= math147ahomeweight
-    if math147aquiz == 0:
-        math147adivisor -= math147aquizweight
     if math147amid == 0:
         math147adivisor -= math147amidweight
     if math147afinal == 0:
@@ -339,7 +331,7 @@ def index(request):
     if math147adivisor == 0:
         math147adivisor = 1
 
-    math147a = round((math147ahome*math147ahomeweight + math147aquiz*math147aquizweight + math147amid*math147amidweight + math147afinal*math147afinalweight)*100/math147adivisor, 2)
+    math147a = round((math147ahome*math147ahomeweight + math147amid*math147amidweight + math147afinal*math147afinalweight)*100/math147adivisor, 2)
 
     if math147a == 100:
         math147aletter = "A+"
@@ -406,17 +398,15 @@ def index(request):
         'pstat160bfinal': round(pstat160bfinal*100, 1), 
         'pstat274': 0.0 if pstat274 == -0.0 else pstat274,
         'pstat274letter': pstat274letter,
-        'pstat274zy': round(pstat274zy*100, 1),
+        'pstat274lab': round(pstat274lab*100, 1),
         'pstat274home': round(pstat274home*100, 1), 
-        'pstat274mid': round(pstat274mid*100, 1), 
+        'pstat274quiz': round(pstat274quiz*100, 1), 
         'pstat274final': round(pstat274final*100, 1), 
         'math147a': 0.0 if math147a == -0.0 else math147a,
         'math147aletter': math147aletter,
         'math147ahome': round(math147ahome*100, 1), 
-        'math147aquiz': round(math147aquiz*100, 1),
         'math147amid': round(math147amid*100, 1), 
         'math147afinal': round(math147afinal*100, 1),
-
     })
 
 

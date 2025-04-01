@@ -159,9 +159,9 @@
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/anintroductiontooptimization">An Introduction to Optimization with Applications to Machine Learning</a></div>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introstochasticprocesses">An Introduction to Stochastic Processes with R</a></div>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontoprobabilitymodels">An Introduction to Probability Models</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/978-3-031-70584-7">Time Series Analysis and its Applications with R</a></div>
                     <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/introductiontotimeseriesandforecasting">Introduction to Time Series and Forecasting</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/timeseriesanalysisanditsapplicationswithr">Time Series Analysis and its Applications with R</a></div>
-                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/978-3-662-69721-4">Elementary Differential Geometry</a></div>
+                    <div><a target="_blank" href="http://127.0.0.1:8000/textbooks/978-1-84882-891-9">Elementary Differential Geometry</a></div>
                 </div>
             </div>
 
@@ -332,7 +332,7 @@
                         </div>
                     </div>
                     <div><b>Math 132B: {{ math132b }} ({{ math132bletter }})</b>
-                        <div>Homework: 
+                        <div>Homework/Quizzes: 
                             {% if math132bhome == 0.0 %}
                                 --
                             {% else %}
@@ -346,7 +346,7 @@
                                 {{ math132bmid }}
                             {% endif %}
                         </div>
-                        <div>Final: 
+                        <div>Final Project: 
                             {% if math132bfinal == 0.0 %}
                                 --
                             {% else %}
@@ -376,7 +376,7 @@
                                 {{ pstat160bmid }}
                             {% endif %}
                         </div>
-                        <div>Final: 
+                        <div>Final Project: 
                             {% if pstat160bfinal == 0.0 %}
                                 --
                             {% else %}
@@ -385,11 +385,11 @@
                         </div>
                     </div>
                     <div><b>Pstat 274: {{ pstat274 }} ({{ pstat274letter }})</b>
-                        <div>Zybooks: 
-                            {% if pstat274zy == 0.0 %}
+                        <div>Labs: 
+                            {% if pstat274lab == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat274zy }}
+                                {{ pstat274lab }}
                             {% endif %}
                         </div>
                         <div>Homework: 
@@ -399,14 +399,14 @@
                                 {{ pstat274home }}
                             {% endif %}
                         </div>
-                        <div>Midterm: 
-                            {% if pstat274mid == 0.0 %}
+                        <div>Quizzes: 
+                            {% if pstat274quiz == 0.0 %}
                                 --
                             {% else %}
-                                {{ pstat274mid }}
+                                {{ pstat274quiz }}
                             {% endif %}
                         </div>
-                        <div>Final: 
+                        <div>Final Project: 
                             {% if pstat274final == 0.0 %}
                                 --
                             {% else %}
@@ -420,13 +420,6 @@
                                 --
                             {% else %}
                                 {{ math147ahome }}
-                            {% endif %}
-                        </div>
-                        <div>Quizzes: 
-                            {% if math147aquiz == 0.0 %}
-                                --
-                            {% else %}
-                                {{ math147aquiz }}
                             {% endif %}
                         </div>
                         <div>Midterm: 
