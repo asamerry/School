@@ -21,23 +21,19 @@ def index(request):
     math118cassigments = Assignment.objects.filter(course='Math 118C')
     math118cgrades = {
         'att': [],
-        'quiz': [],
         'home': [],
         'mid': [],
         'final': [],
     }
 
     math118cattweight = 0.1
-    math118cquizweight = 0.1
-    math118chomeweight = 0.3
+    math118chomeweight = 0.4
     math118cmidweight = 0.25
     math118cfinalweight = 0.25
 
     for grade in math118cassigments:
         if grade.category == 'Attendence':
             math118cgrades['att'].append(grade.score/grade.total)
-        elif grade.category == 'Quiz':
-            math118cgrades['quiz'].append(grade.score/grade.total)
         elif grade.category == 'Homework':
             math118cgrades['home'].append(grade.score/grade.total)
         elif grade.category == 'Midterm':
@@ -46,7 +42,6 @@ def index(request):
             math118cgrades['final'].append(grade.score/grade.total)
 
     math118catt = sum(math118cgrades['att']) / max(len(math118cgrades['att']), 1)
-    math118cquiz = sum(math118cgrades['quiz']) / max(len(math118cgrades['quiz']), 1)
     math118chome = sum(math118cgrades['home']) / max(len(math118cgrades['home']), 1)
     math118cmid = sum(math118cgrades['mid']) / max(len(math118cgrades['mid']), 1)
     math118cfinal = sum(math118cgrades['final']) / max(len(math118cgrades['final']), 1)
@@ -54,8 +49,6 @@ def index(request):
     math118cdivisor = 1
     if math118catt == 0:
         math118cdivisor -= math118cattweight
-    if math118cquiz == 0:
-        math118cdivisor -= math118cquizweight
     if math118chome == 0:
         math118cdivisor -= math118chomeweight
     if math118cmid == 0:
@@ -65,7 +58,7 @@ def index(request):
     if math118cdivisor == 0:
         math118cdivisor = 1
 
-    math118c = round((math118catt*math118cattweight + math118cquiz*math118cquizweight + math118chome*math118chomeweight + math118cmid*math118cmidweight + math118cfinal*math118cfinalweight)*100/math118cdivisor, 2)
+    math118c = round((math118catt*math118cattweight + math118chome*math118chomeweight + math118cmid*math118cmidweight + math118cfinal*math118cfinalweight)*100/math118cdivisor, 2)
 
     if math118c == 100:
         math118cletter = "A+"
@@ -381,7 +374,6 @@ def index(request):
         'math118c': 0.0 if math118c == -0.0 else math118c,
         'math118cletter': math118cletter,
         'math118catt': round(math118catt*100, 1),
-        'math118cquiz': round(math118cquiz*100, 1),
         'math118chome': round(math118chome*100, 1), 
         'math118cmid': round(math118cmid*100, 1), 
         'math118cfinal': round(math118cfinal*100, 1), 
